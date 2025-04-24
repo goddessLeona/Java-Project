@@ -1,15 +1,16 @@
 package Order;
 
-public class DiscountPercentage implements Discount3000  {
+public class DiscountOver3000 implements Discount  {
 
-    private final double percentage;
-
-    public DiscountPercentage(double percentage) {
-        this.percentage = percentage;
-    }
+    private final double percentage = 0.10;
 
     @Override
-    public double discount3000(double totalAmount) {
-        return totalAmount * (1 - percentage/100);
+    public double applyDiscount(double total) {
+        if (total > 3000){
+            System.out.println("you earned a discount of 10%, buying over 3000 ");
+            return total * (1-percentage);
+        }
+        return total;
     }
+
 }
